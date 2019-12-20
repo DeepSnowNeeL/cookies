@@ -1,6 +1,6 @@
-# aescarcha/cookies
+# ngx-deepsnowneel-universal-cookies
 
-This is a fork of @ngx-utils/cookies with the changes from SergiusSidorov/cookies to have a package published at NPM with compatibility with newer angular versions
+This is a fork of aescarcha/cookies which was a fork of @ngx-utils/cookies with the changes from SergiusSidorov/cookies to have a package published at NPM with compatibility with newer angular versions
 
 [![npm version](https://badge.fury.io/js/%40ngx-utils%2Fcookies.svg)](https://badge.fury.io/js/%40ngx-utils%2Fcookies) [![npm downloads](https://img.shields.io/npm/dm/@ngx-utils/cookies.svg)](https://www.npmjs.com/package/@ngx-utils/cookies)
 
@@ -10,20 +10,20 @@ Example in [@ngx-utils/universal-starter](https://github.com/ngx-utils/universal
 
 ## Table of contents:
 
-* [Prerequisites](#prerequisites)
-* [Getting started](#getting-started)
-  * [Installation](#installation)
-  * [browser.module.ts](#browsermodulets)
-  * [server.module.ts](#servermodulets)
-  * [Cookies options](#cookies-options)
-* [API](#api)
-* [Example of usage](#example-of-usage)
-* [Contributing](#contributing)
-* [License](#license)
+- [Prerequisites](#prerequisites)
+- [Getting started](#getting-started)
+  - [Installation](#installation)
+  - [browser.module.ts](#browsermodulets)
+  - [server.module.ts](#servermodulets)
+  - [Cookies options](#cookies-options)
+- [API](#api)
+- [Example of usage](#example-of-usage)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## Prerequisites
 
-This package depends on `@angular >= v7.0.0`.
+This package depends on `@angular >= v9.0.0`.
 
 And if you want to manage cookies on server side and you're using express as server you need install:
 `npm i -S cookie-parser @nguniversal/module-map-ngfactory-loader`
@@ -32,10 +32,10 @@ And if you want to manage cookies on server side and you're using express as ser
 
 ### Installation
 
-Install **ngx-universal-cookies** from npm:
+Install **ngx-deepsnowneel-universal-cookies** from npm:
 
 ```bash
-npm install ngx-universal-cookies --save
+npm install ngx-deepsnowneel-universal-cookies --save
 ```
 
 ### browser.module.ts
@@ -45,7 +45,7 @@ Add **BrowserCookiesModule** to your browser module:
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserCookiesModule } from 'ngx-universal-cookies/browser';
+import { BrowserCookiesModule } from 'ngx-deepsnowneel-universal-cookies/browser';
 ...
 import { AppModule } from './app/app.module';
 import { AppComponent } from './app/app.component';
@@ -70,7 +70,7 @@ Add **ServerCookiesModule** to your server module:
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ServerModule } from '@angular/platform-server';
-import { ServerCookiesModule } from 'ngx-universal-cookies/server';
+import { ServerCookiesModule } from 'ngx-deepsnowneel-universal-cookies/server';
 ...
 import { AppModule } from './app/app.module';
 import { AppComponent } from './app/app.component';
@@ -114,57 +114,60 @@ ServerCookiesModule.forRoot({
 
 `CookieService` has following methods:
 
-* `put(key: string, value: string, options?: CookiesOptions): void` put some value to cookies;
-* `putObject(key: string, value: Object, options?: CookiesOptions): void` put object value to cookies;
-* `get(key: string): string` get some value from cookies by `key`;
-* `getObject(key: string): { [key: string]: string } | string` get object value from cookies by `key`;
-* `getAll(): { [key: string]: string }` get all cookies ;
-* `remove(key: string, options?: CookiesOptions): void` remove cookie by `key`;
-* `removeAll(): void` remove all cookies;
+- `put(key: string, value: string, options?: CookiesOptions): void` put some value to cookies;
+- `putObject(key: string, value: Object, options?: CookiesOptions): void` put object value to cookies;
+- `get(key: string): string` get some value from cookies by `key`;
+- `getObject(key: string): { [key: string]: string } | string` get object value from cookies by `key`;
+- `getAll(): { [key: string]: string }` get all cookies ;
+- `remove(key: string, options?: CookiesOptions): void` remove cookie by `key`;
+- `removeAll(): void` remove all cookies;
 
 ## Example of usage
 
 If you're using `express` as server then add following code to your `server.ts`:
 
 ```ts
-import * as express from 'express';
-import * as cookieParser from 'cookie-parser';
-import { ngExpressEngine } from '@nguniversal/express-engine';
-import { provideModuleMap } from '@nguniversal/module-map-ngfactory-loader';
-const { AppServerModuleNgFactory, LAZY_MODULE_MAP } = require('./dist/server/main');
+import * as express from "express";
+import * as cookieParser from "cookie-parser";
+import { ngExpressEngine } from "@nguniversal/express-engine";
+import { provideModuleMap } from "@nguniversal/module-map-ngfactory-loader";
+const {
+  AppServerModuleNgFactory,
+  LAZY_MODULE_MAP
+} = require("./dist/server/main");
 
+app.use(cookieParser("Your private token"));
 
-app.use(cookieParser('Your private token'));
-
-app.engine('html', ngExpressEngine({
-  bootstrap: AppServerModuleNgFactory,
-  providers: [
-    provideModuleMap(LAZY_MODULE_MAP)
-  ],
-}));
+app.engine(
+  "html",
+  ngExpressEngine({
+    bootstrap: AppServerModuleNgFactory,
+    providers: [provideModuleMap(LAZY_MODULE_MAP)]
+  })
+);
 ```
 
-Then just import `CookiesService` from `ngx-universal-cookies` and use it:
+Then just import `CookiesService` from `ngx-deepsnowneel-universal-cookies` and use it:
 
 ```ts
-import { Component, OnInit } from '@angular/core';
-import { CookiesService } from 'ngx-universal-cookies';
+import { Component, OnInit } from "@angular/core";
+import { CookiesService } from "ngx-deepsnowneel-universal-cookies";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
   constructor(private cookies: CookiesService) {}
 
   ngOnInit() {
-    this.cookies.put('some_cookie', 'some_cookie');
-    this.cookies.put('http_only_cookie', 'http_only_cookie', {
+    this.cookies.put("some_cookie", "some_cookie");
+    this.cookies.put("http_only_cookie", "http_only_cookie", {
       httpOnly: true
     });
-    console.log(this.cookies.get('some_cookie'), ' => some_cookie');
-    console.log(this.cookies.get('http_only_cookie'), ' => undefined');
+    console.log(this.cookies.get("some_cookie"), " => some_cookie");
+    console.log(this.cookies.get("http_only_cookie"), " => undefined");
     console.log(this.cookies.getAll());
   }
 }
@@ -182,7 +185,7 @@ app.use(async (ctx: Context) => {
     extraProviders: [
       provideModuleMap(LAZY_MODULE_MAP),
       {
-        provide: 'KOA_CONTEXT',
+        provide: "KOA_CONTEXT",
         useValue: ctx
       }
     ]
@@ -193,13 +196,13 @@ app.use(async (ctx: Context) => {
 Then create `server-cookies.service.ts`:
 
 ```ts
-import { Context } from 'koa';
-import { Inject, Injectable } from '@angular/core';
+import { Context } from "koa";
+import { Inject, Injectable } from "@angular/core";
 import {
   CookiesService,
   CookiesOptionsService,
   CookiesOptions
-} from 'ngx-universal-cookies';
+} from "ngx-deepsnowneel-universal-cookies";
 
 @Injectable()
 export class ServerCookiesService extends CookiesService {
@@ -207,7 +210,7 @@ export class ServerCookiesService extends CookiesService {
 
   constructor(
     cookiesOptions: CookiesOptionsService,
-    @Inject('KOA_CONTEXT') private ctx: Context
+    @Inject("KOA_CONTEXT") private ctx: Context
   ) {
     super(cookiesOptions);
   }

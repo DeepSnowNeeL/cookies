@@ -1,11 +1,11 @@
 {
-  "name": "ngx-universal-cookies",
-  "version": "8.0.1",
+  "name": "ngx-deepsnowneel-universal-cookies",
+  "version": "9.0.0",
   "description": "Manage your cookies on client and server side (Angular Universal)",
   "keywords": [
     "angular",
-    "angular8",
-    "angular 8",
+    "angular9",
+    "angular 9",
     "angular universal",
     "cookie",
     "cookies"
@@ -39,7 +39,7 @@
     "rimraf": "^2.6.1",
     "rollup": "^0.43.0",
     "rxjs": "^6.0.0",
-    "typescript": "^3.6.4",
+    "typescript": "3.6.4",
     "uglify-js": "^3.0.18",
     "zone.js": "^0.10.2"
   },
