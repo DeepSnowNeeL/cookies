@@ -26,31 +26,31 @@
     "release": "npm run build && cd ./release && npm publish"
   },
   "peerDependencies": {
-    "@angular/core": ">=8.0.0 || ^8.0.0-rc.0",
+    "@angular/core": ">=9.0.0 || ^9.0.0-rc.0",
     "rxjs": ">=6.0.0",
     "zone.js": ">=0.9"
   },
   "devDependencies": {
-    "@angular/common": "^8.0.0 || ^8.0.0-rc.0",
-    "@angular/compiler": "^8.0.0 || ^8.0.0-rc.0",
-    "@angular/compiler-cli": "^8.0.0 || ^8.0.0-rc.0",
-    "@angular/core": "^8.0.0 || ^8.0.0-rc.0",
+    "@angular/common": "^9.0.0 || ^9.0.0-rc.0",
+    "@angular/compiler": "^9.0.0 || ^9.0.0-rc.0",
+    "@angular/compiler-cli": "^9.0.0 || ^9.0.0-rc.0",
+    "@angular/core": "^9.0.0 || ^9.0.0-rc.0",
     "cpy-cli": "^1.0.1",
     "rimraf": "^2.6.1",
     "rollup": "^0.43.0",
     "rxjs": "^6.0.0",
-    "typescript": "^3.4.0",
+    "typescript": "^3.6.4",
     "uglify-js": "^3.0.18",
-    "zone.js": "^0.9"
+    "zone.js": "^0.10.2"
   },
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aescarcha/cookies"
+    "url": "git+https://github.com/DeepSnowNeeL/cookies"
   },
-  "homepage": "https://github.com/aescarcha/cookies#readme",
+  "homepage": "https://github.com/DeepSnowNeeL/cookies#readme",
   "bugs": {
-    "url": "https://github.com/aescarcha/cookies/issues"
+    "url": "https://github.com/DeepSnowNeeL/cookies/issues"
   },
   "author": "Anton Barada",
   "license": "MIT"
